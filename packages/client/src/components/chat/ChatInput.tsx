@@ -17,18 +17,19 @@ const ChatInput = ({ onSubmit }: Props) => {
   const onKeyDown = (e: KeyboardEvent<HTMLFormElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      handleSubmit(onSubmit)();
+      // handleSubmit(onSubmit)();
+      submit();
     }
   };
 
-  const handleFormSubmit = handleSubmit((data) => {
+  const submit = handleSubmit((data) => {
     reset({ prompt: '' });
     onSubmit(data);
   });
 
   return (
     <form
-      onSubmit={handleFormSubmit}
+      onSubmit={submit}
       onKeyDown={onKeyDown}
       className="flex flex-col gap-2 items-end border-2 p-4 rounded-3xl"
     >
